@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+	<title>javascript</title>
+
+	<link crossorigin="anonymous" media="all" rel="stylesheet" href="/assets/scss/common.css" />
+	<script type="text/javascript">
+
+		// ONLY ENG INPUT HANDLE
+		function _f_initHandleOnlyEng(e){
+			e.value = e.value.replace(/[^A-Za-z]/ig, '')
+		}
+		
+		// ERROR COLOR
+		function _f_initColor(obj, color){
+			obj.style.backgroundColor = color
+		}
+
+
+		window.onload = function(){
+			
+			document.getElementById('loginButton').addEventListener('click', _f_initValidate)
+
+			function _f_initValidate(){
+				
+				const IDVALIDATE = document.getElementById('id')
+				
+				if( IDVALIDATE.value === '' || IDVALIDATE.value === null || IDVALIDATE.value === undefined ){
+					
+					alert('아이디를 입력해 주세요')
+					IDVALIDATE.onchange = _f_initColor(IDVALIDATE, 'red')
+					IDVALIDATE.focus()	
+
+				}else{
+
+					if( IDVALIDATE.value.length < 5 ){
+						alert('8자 이상 입력해 주세요')
+						IDVALIDATE.onchange = _f_initColor(IDVALIDATE, 'green')
+						IDVALIDATE.focus()
+
+					}else{
+
+						alert('OK')
+					}
+				}
+
+			}
+
+		}
+
+	</script>
+</head>
+<body>
+	
+	<div id="test">
+
+		<div id="memberJoin">
+			<form>
+				<div class="id">
+					<label for="id">ID</label><br>
+					<input name="password" id="id" type="text" oninput="_f_initHandleOnlyEng(this)" placeholder="아이디를 입력해 주세요" />
+				</div>
+
+				<!-- <div class="password">
+					<label for="password">password</label><br>
+					<input name="password" id="password" type="text" placeholder="아이디를 입력해 주세요" />
+				</div>
+
+				<div class="passwordConfirm">
+					<label for="passwordConfirm">password confirm</label><br>
+					<input name="passwordConfirm" id="passwordConfirm" type="text" placeholder="아이디를 입력해 주세요" />
+				</div> -->
+				<br>
+				<button type="button" id="loginButton">LOGIN</button>
+			</form>
+		</div>
+
+	</div>
+    
+
+</body>
+</html>
