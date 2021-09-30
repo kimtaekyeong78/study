@@ -21,7 +21,9 @@
 
 		window.onload = function(){
 			
-			document.getElementById('loginButton').addEventListener('click', _f_initValidate)
+			const LOGINBUTTON = document.getElementById('loginButton')
+
+			LOGINBUTTON.addEventListener('click', _f_initValidate)
 
 			function _f_initValidate(){
 				
@@ -42,7 +44,10 @@
 
 					}else{
 
-						alert('OK')
+						alert('ID: '+IDVALIDATE.value)
+
+						//document.id.innerHTML = 'test'
+						document.getElementsByName('memberJoin')[0].submit()
 					}
 				}
 
@@ -57,7 +62,7 @@
 	<div id="test">
 
 		<div id="memberJoin">
-			<form>
+			<form name="memberJoin" action='/' method="post">
 				<div class="id">
 					<label for="id">ID</label><br>
 					<input name="password" id="id" type="text" oninput="_f_initHandleOnlyEng(this)" placeholder="아이디를 입력해 주세요" />
@@ -73,7 +78,7 @@
 					<input name="passwordConfirm" id="passwordConfirm" type="text" placeholder="아이디를 입력해 주세요" />
 				</div> -->
 				<br>
-				<button type="button" id="loginButton">LOGIN</button>
+				<input type="button" id="loginButton">LOGIN</input>
 			</form>
 		</div>
 
