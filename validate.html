@@ -29,7 +29,8 @@
 				
 				const IDVALIDATE = document.getElementById('id')
 				
-				if( IDVALIDATE.value === '' || IDVALIDATE.value === null || IDVALIDATE.value === undefined ){
+
+				if( !IDVALIDATE.value ){
 					
 					alert('아이디를 입력해 주세요')
 					IDVALIDATE.onchange = _f_initColor(IDVALIDATE, 'red')
@@ -44,6 +45,7 @@
 
 					}else{
 
+						localStorage.setItem('ID', IDVALIDATE.value)
 						alert('ID: '+IDVALIDATE.value)
 
 						//document.id.innerHTML = 'test'
