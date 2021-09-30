@@ -15,6 +15,8 @@
 				{name:'kim', age:17, address:'Republic of Korea, Seoul'},
 				{name:'Park', age:28, address:'Japan'},
 			)
+			_array1.expend = 'test'
+			
 			// let _array2 = [
 			// 	{name:'kim', age:17, address:'Republic of Korea, Seoul'},
 			// 	{name:'Park', age:28, address:'Japan'},
@@ -22,19 +24,60 @@
 
 			let _listHTML = ''
 
-			for( i=0; i < _array1.length; i++){
+			// for 기존방식
+			// 가장많이 보편화 되어있는 구현방식
+			// for( i=0; i < _array1.length; i++){
 
+			// 	_listHTML += '<ul>';
+			// 	_listHTML += '<li>'+ _array1[i].name +'</li>';
+			// 	_listHTML += '<li>'+ _array1[i].age +'</li>';
+			// 	_listHTML += '<li>'+ _array1[i].address +'</li>';
+			// 	_listHTML += '</ul>';
+
+			// }
+
+			// Only arrary
+			// forEach는 Javascript에서 only Araary에만 사용가능하며, 실제로 arrary반복문 시 많이 쓰임(기존방식보단 살작 느림??)
+			// _array1.forEach(function(item, index, arr){
+			// 	_listHTML += '<ul>';
+			// 	_listHTML += '<li>'+ item.name +'</li>';
+			// 	_listHTML += '<li>'+ item.age +'</li>';
+			// 	_listHTML += '<li>'+ item.address +'</li>';
+			// 	_listHTML += '</ul>';
+				
+			// 	console.log(item);
+			// 	console.log(index);
+			// 	console.log(arr);
+			// })
+			
+			// For in ~
+			// 이 방법은 Vue에서도 비슷한 디렉티브를 제공하기에 개인적으로 좋음
+			// for(var key in _array1) {
+			// 	_listHTML += '<ul>';
+			// 	_listHTML += '<li>'+ _array1[key].name +'</li>';
+			// 	_listHTML += '<li>'+ _array1[key].age +'</li>';
+			// 	_listHTML += '<li>'+ _array1[key].address +'</li>';
+			// 	_listHTML += '</ul>';
+
+			// 	console.log(key);
+			// 	console.log(_array1[key]);
+
+			// }
+
+
+			// ES6 NEW For of ~
+			for(var value of _array1){ 
 				_listHTML += '<ul>';
-				_listHTML += '<li>'+ _array1[i].name +'</li>';
-				_listHTML += '<li>'+ _array1[i].age +'</li>';
-				_listHTML += '<li>'+ _array1[i].address +'</li>';
+				_listHTML += '<li>'+ value.name +'</li>';
+				_listHTML += '<li>'+ value.age +'</li>';
+				_listHTML += '<li>'+ value.address +'</li>';
 				_listHTML += '</ul>';
 
+				console.log(value);
 			}
 
+
 			LISTHTML.innerHTML = _listHTML
-
-
 
 			//////////////////////////////////////////////////////////////////////////////
 			let _array2 = [3, 2, 1]
