@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+	<title>javascript</title>
+
+	<link crossorigin="anonymous" media="all" rel="stylesheet" href="/assets/scss/common.css" />
+	<script type="text/javascript">
+
+		window.onload = function(){
+		
+			const LISTHTML = document.getElementById('listWrap')
+			let _array1 = new Array(
+				{name:'kim', age:17, address:'Republic of Korea, Seoul'},
+				{name:'Park', age:28, address:'Japan'},
+			)
+			// let _array2 = [
+			// 	{name:'kim', age:17, address:'Republic of Korea, Seoul'},
+			// 	{name:'Park', age:28, address:'Japan'},
+			// ];
+
+			let _listHTML = ''
+
+			for( i=0; i < _array1.length; i++){
+
+				_listHTML += '<ul>';
+				_listHTML += '<li>'+ _array1[i].name +'</li>';
+				_listHTML += '<li>'+ _array1[i].age +'</li>';
+				_listHTML += '<li>'+ _array1[i].address +'</li>';
+				_listHTML += '</ul>';
+
+			}
+
+			LISTHTML.innerHTML = _listHTML
+
+
+
+			//////////////////////////////////////////////////////////////////////////////
+			let _array2 = [3, 2, 1]
+
+			document.getElementById('numberWrap').innerHTML = _array2[1]
+
+			
+
+		}
+
+	</script>
+</head>
+<body>
+	
+	<div id="test">
+
+		<div id="listWrap"></div>
+
+		<div id="numberWrap">
+			158321313213
+		</div>
+
+	</div>
+    
+
+</body>
+</html>

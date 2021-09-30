@@ -10,10 +10,19 @@
 
 		window.onload = function(){
 
+			function _querySelector(selector, type){
+
+				if( type == 'all'){
+					document.querySelectorAll(selector)	
+
+				}else if(type == null){
+					document.querySelector(selector)
+				}
+			}
+
 			const _tabWrap = document.getElementById('tabwrap')
 			const _tabButton = _tabWrap.getElementsByTagName('li')
 			
-
 			for(var i=0; i < _tabButton.length; i++ ){
 
 				_tabButton[i].onclick = function(e){
@@ -23,10 +32,8 @@
 					let _index = [].indexOf.call(_parent.children, _target)
 					let _tabContent = document.getElementsByClassName('contents')
 
-
 					document.querySelector('li.active').classList.remove('active')
 					document.querySelector('div.active').classList.remove('active')
-
 
 					this.classList.add('active')
 					_tabContent[_index].classList.add('active')
@@ -58,7 +65,6 @@
 			<div class="contents" data-num="2">content3</div>
 
 		</div>
-
 
 	</div>
     
