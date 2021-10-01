@@ -7,13 +7,20 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 	<link crossorigin="anonymous" media="all" rel="stylesheet" href="/assets/scss/common.css" />
 	<script type="text/javascript">
-
+		
+		
+		window.onload = function(){
+			_f_initAjaxList()
+		}
+		
+		
 		// JQUERY AJAX
-		$(document).on('ready', function(){
-			
-			let param1 = 20211001; // 서버로 보내야할 데이터 1
-			let param2 = 13; // 서버로 보내야할 데이터 2
+		function _f_initAjaxList(){
 
+			let param1 = 20210930; // 서버로 보내야할 데이터 1
+			let param2 = 11; // 서버로 보내야할 데이터 2
+
+			
 			try{
 				$.ajax({
 					url: `http://data.ex.co.kr/openapi/restinfo/restWeatherList?key=test&type=json&sdate=${param1}&stdHour=${param2}`,
@@ -22,32 +29,45 @@
 					dataType: 'json',
 					success : function (response) {
 
-						var _weatherHTML = ''
-						
+						let _weatherHTML = ''
+						let _weatherOPTION = ''
+
+						_weatherOPTION += '<option selected>휴계소를 선택해 주세요</option>';
 						for(var key in response.list) {
 							
+							//console.log(key);
+							//console.log(response.list[key]);
+
+							_weatherOPTION += '<option value="'+ key +'">'+ response.list[key].unitName +'</option>';
+						}
+
+						document.getElementsByName('unitName')[0].innerHTML = _weatherOPTION;
+
+
+						//SELECT OPTION ONCHANGE EVENT
+						document.getElementsByName('unitName')[0].onchange = function(e){
+							
+							console.log(e.target.value)
+							let _index = response.list[e.target.value]
+							document.getElementById('ajaxList').innerHTML = 'a'
+							
 							function getToday(){
-								var year = response.list[key].sdate.slice(0, 4) + '년';
-								var month = response.list[key].sdate.slice(4, 6) + '월';
-								var day = response.list[key].sdate.slice(6, 8) + '일';
+								var year = _index.sdate.slice(0, 4) + '년';
+								var month = _index.sdate.slice(4, 6) + '월';
+								var day = _index.sdate.slice(6, 8) + '일';
 
 								return year + month + day;
 							}
 
-							_weatherHTML += '<ul>';
-							_weatherHTML += '<li>'+ response.list[key].unitName +'</li>';
-							_weatherHTML += '<li>날짜: '+ getToday() +' &nbsp; '+ response.list[key].stdHour +'시</li>';
-							_weatherHTML += '<li>고속도로 : '+ response.list[key].routeName +'</li>';
-							_weatherHTML += '<li>휴게소 주소 : '+ response.list[key].addr +'</li>';
-							_weatherHTML += '<li>날씨상태 : '+ response.list[key].weatherContents +'</li>';
-							_weatherHTML += '</ul>';
+							_weatherHTML += '<li>날짜: '+ getToday() +' &nbsp; '+ _index.stdHour +'시</li>';
+							_weatherHTML += '<li>고속도로 : '+ _index.routeName +'</li>';
+							_weatherHTML += '<li>휴게소 주소 : '+ _index.addr +'</li>';
+							_weatherHTML += '<li>날씨상태 : '+ _index.weatherContents +'</li>';
 
-							//console.log(key);
-							//console.log(response.list[key]);
-
+							
+							document.getElementById('ajaxList').innerHTML = _weatherHTML
 						}
-
-						document.querySelector("#ajaxWrap").innerHTML = _weatherHTML;
+						
 					},
 					error: function (xhr) {
 						alert(xhr)
@@ -59,8 +79,9 @@
 				//AJAX 로드 실패
 				alert(e)
 			}
-			
-		})
+		}	
+	
+		
 		
 
 	</script>
@@ -69,9 +90,17 @@
 	
 	<div id="test">
 
-		<div id="ajaxWrap">
+		<div>
 			<h1>휴게소 날씨 상황</h1>
-			<div id="listWrap"></div>
+			
+			<div id="listWrap">
+			
+				<select name="unitName">
+					<option selected value="0">휴계소를 선택해 주세요</option>
+				</select>
+
+				<div id="ajaxList"></div>
+			</div>
 		</div>
 
 	</div>
