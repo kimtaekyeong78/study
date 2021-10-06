@@ -47,10 +47,9 @@
 						//SELECT OPTION ONCHANGE EVENT
 						document.getElementsByName('unitName')[0].onchange = function(e){
 							
-							console.log(e.target.value)
-							let _index = response.list[e.target.value]
-							document.getElementById('ajaxList').innerHTML = 'a'
 							
+							let _index = response.list[e.target.value]
+							document.getElementById('ajaxList').innerHTML = ""
 							function getToday(){
 								var year = _index.sdate.slice(0, 4) + '년';
 								var month = _index.sdate.slice(4, 6) + '월';
@@ -59,13 +58,9 @@
 								return year + month + day;
 							}
 
-							_weatherHTML += '<li>날짜: '+ getToday() +' &nbsp; '+ _index.stdHour +'시</li>';
-							_weatherHTML += '<li>고속도로 : '+ _index.routeName +'</li>';
-							_weatherHTML += '<li>휴게소 주소 : '+ _index.addr +'</li>';
-							_weatherHTML += '<li>날씨상태 : '+ _index.weatherContents +'</li>';
+							document.getElementById('ajaxList').innerHTML = '<li>날씨상태 : '+ _index.weatherContents +'</li>'
 
-							
-							document.getElementById('ajaxList').innerHTML = _weatherHTML
+
 						}
 						
 					},

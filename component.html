@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+	<title>javascript</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<link crossorigin="anonymous" media="all" rel="stylesheet" href="/assets/scss/common.css" />
+	<script type="text/javascript">
+		
+		
+		window.onload = function(){
+			_f_initShandowDom()
+			_f_initComponent()
+
+		}
+		
+		
+		function _f_initShandowDom(){
+			let _label = 'ID'
+			let _labelId = 'test'
+
+			// SHADOW DOM OPEN
+			document.getElementById('shadowDom').attachShadow({
+				mode : 'open'
+			})
+			document.getElementById('shadowDom').shadowRoot.innerHTML = `<label for="${_labelId}">${_label}</label><input type="text" id="${_labelId}">`
+		}	
+
+		function _f_initComponent(){
+			
+			class Inputcustom extends HTMLElement {
+				
+				connectedCallback() {
+					let _label = 'PASSWORD'
+					let _labelId = 'pass'
+
+					this.innerHTML += `<h2>Component</h2>`;
+					this.innerHTML += `<label for="pass">test</label>`;
+					this.innerHTML += `<input type="password id="pass">`;
+					this.innerHTML += `<style>label {color: #ff5500}`;
+
+					// this.attachShadow({ mode: 'open'})
+					// this.shadowRoot.innerHTML = `<label for="${_labelId}">${_label}</label><input type="text" id="${_labelId}">`
+
+					//Template
+					this.attachShadow({ mode: 'open'})
+					this.shadowRoot.append(inputTmp.content.cloneNode(true))
+
+				}
+			}
+
+			customElements.define('compoennt-input', Inputcustom)
+		}
+
+
+	</script>
+</head>
+<body>
+	
+	<div id="test">
+
+		<div id="shadowDom"></div>
+
+		<compoennt-input></compoennt-input>
+
+	</div>
+	
+	<template id="inputTmp">
+		<label for="temp">temp</label>
+		<input type="text" id="temp">
+	</template>
+
+</body>
+</html>
