@@ -21,13 +21,13 @@
 			const AGREECHECKS = document.querySelectorAll('input[name=check]');
 			
 			//전체 선택
-			function _araiChecked(val){
-				AGREECHECKS[i].setAttribute('aria-checked', val)
-				e.target.setAttribute('aria-checked', val)
-			}
-
 			ALLCHECK.addEventListener('change', function(e){
 				
+				function _araiChecked(val){
+					AGREECHECKS[i].setAttribute('aria-checked', val)
+					e.target.setAttribute('aria-checked', val)
+				}
+
 				for( let i=0; i < AGREECHECKS.length; i++){
 					console.log(AGREECHECKS[i])
 					AGREECHECKS[i].checked = e.target.checked
@@ -44,16 +44,14 @@
 
 			
 			//개별 선택
-			function _allChecked(val){
-				ALLCHECK.checked = val
-				ALLCHECK.setAttribute('aria-checked', `${val}`)
-			}
-			
 			for( let i=0; i < AGREECHECKS.length; i++){
 
 				AGREECHECKS[i].addEventListener('change', function(e){
 
-					
+					function _allChecked(val){
+						ALLCHECK.checked = val
+						ALLCHECK.setAttribute('aria-checked', `${val}`)
+					}		
 
 					if( !AGREECHECKS[i].checked){
 						AGREECHECKS[i].setAttribute('aria-checked', 'false')
