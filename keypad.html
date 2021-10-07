@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+	<title>javascript</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<link crossorigin="anonymous" media="all" rel="stylesheet" href="/assets/scss/common.css" />
+	<script type="text/javascript">
+		
+		
+		window.onload = function(){
+		
+			_f_initKeypad()
+
+		}
+		
+		function _f_initKeypad(){
+			
+					
+
+		}
+
+	
+	</script>
+</head>
+<body>
+	
+	<div id="keypad">
+
+		<div id="view" style="width:400px; height:20px; border:1px solid #000; display: flex; align-items: center; padding: 10px">asdf</div>
+		<input type="hidden" id="keyvalue" value=""> 
+
+		<br>
+		<fieldset><table summary="0,1,2,3,4,5,6,7,8,9,00,0">
+			<caption>keypad</caption>
+			<tbody><tr>
+				<th scope="col"><button type="button" data-num="1">1</button></th>
+				<th scope="col"><button type="button" data-num="2">2</button></th>
+				<th scope="col"><button type="button" data-num="3">3</button></th>
+			</tr><tr>
+				<th scope="col"><button type="button" data-num="4">4</button></th>
+				<th scope="col"><button type="button" data-num="5">5</button></th>
+				<th scope="col"><button type="button" data-num="6">6</button></th>
+			</tr><tr>
+				<th scope="col"><button type="button" data-num="7">7</button></th>
+				<th scope="col"><button type="button" data-num="8">8</button></th>
+				<th scope="col"><button type="button" data-num="9">9</button></th>
+			</tr><tr>
+				<th scope="col"><button type="button" data-num="00">00</button></th>
+				<th scope="col"><button type="button" data-num="0">0</button></th>
+				<th scope="col"><button type="button" data-num="-1">삭제</button></th>
+			</tr></tbody>
+		</table>
+		<button type="button" data-role="button-next" disabled>
+		</fieldset>
+		</div>
+
+</body>
+</html>
