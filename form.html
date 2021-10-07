@@ -23,15 +23,15 @@
 			//전체 선택
 			ALLCHECK.addEventListener('change', function(e){
 				
-				function _araiChecked(val){
-					AGREECHECKS[i].setAttribute('aria-checked', val)
-					e.target.setAttribute('aria-checked', val)
-				}
-
 				for( let i=0; i < AGREECHECKS.length; i++){
 					console.log(AGREECHECKS[i])
 					AGREECHECKS[i].checked = e.target.checked
 					
+					function _araiChecked(val){
+						AGREECHECKS[i].setAttribute('aria-checked', val)
+						e.target.setAttribute('aria-checked', val)
+					}
+
 					if( AGREECHECKS[i].getAttribute('aria-checked') == 'false' ){
 						
 						_araiChecked('true')
