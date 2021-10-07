@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+	<title>javascript</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<link crossorigin="anonymous" media="all" rel="stylesheet" href="/assets/scss/common.css" />
+	<script type="text/javascript">
+		
+		
+		window.onload = function(){
+		
+			_f_initAgreeForm()
+
+		}
+		
+		function _f_initAgreeForm(){
+			
+			document.getElementById('search').addEventListener('click', function(){
+				let test = prompt('가장 먹고싶은 음식은? 1.짜장면 2.피자 3.소주')
+
+
+				switch(Number(test)){
+					case 1:
+						alert('살쩌요!!');
+						break;
+					case 2:
+						alert('같이 먹어요~!!');
+						break;
+					case 3:
+						alert('속버려요!!');
+						break;
+
+					default:
+						alert('살쩌요!!');
+						break;
+				}
+			})			
+
+		}
+
+	
+	</script>
+</head>
+<body>
+	
+	<section id="agree" style="display: block;">
+		
+		<button type="button" id="search">설문조사</button>
+		
+
+	</section>
+
+</body>
+</html>
