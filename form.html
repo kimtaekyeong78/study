@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+	<title>javascript</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<link crossorigin="anonymous" media="all" rel="stylesheet" href="/assets/scss/common.css" />
+	<script type="text/javascript">
+		
+		
+		window.onload = function(){
+		
+			_f_initAgreeForm()
+
+		}
+		
+		function _f_initAgreeForm(){
+			
+			const ALLCHECK = document.getElementById('check_all');
+			const AGREECHECKS = document.querySelectorAll('input[name=check]');
+			
+			//전체 선택
+			ALLCHECK.addEventListener('change', function(e){
+				
+				for( let i=0; i < AGREECHECKS.length; i++){
+					console.log(AGREECHECKS[i])
+					AGREECHECKS[i].checked = e.target.checked
+					
+					function _araiChecked(val){
+						AGREECHECKS[i].setAttribute('aria-checked', val)
+						e.target.setAttribute('aria-checked', val)
+					}
+					
+					if( AGREECHECKS[i].getAttribute('aria-checked') == 'false' ){
+						
+						_araiChecked('true')
+						
+					}else{
+						_araiChecked('false')
+					}
+				}
+			})
+
+			//개별 선택
+			for( let i=0; i < AGREECHECKS.length; i++){
+				
+				AGREECHECKS[i].addEventListener('change', function(e){
+
+					if( !AGREECHECKS[i].checked){
+						AGREECHECKS[i].setAttribute('aria-checked', 'false')
+
+						if( ALLCHECK.checked || ALLCHECK.getAttribute('aria-checked') == 'true' ){
+							ALLCHECK.checked = false
+							ALLCHECK.setAttribute('aria-checked', 'false')
+						}
+						
+					}else{
+						AGREECHECKS[i].setAttribute('aria-checked', 'true')
+						let _agreeCheck = [
+							{checked: AGREECHECKS[0].getAttribute('aria-checked')},
+							{checked: AGREECHECKS[1].getAttribute('aria-checked')},
+							{checked: AGREECHECKS[2].getAttribute('aria-checked')},
+							{checked: AGREECHECKS[3].getAttribute('aria-checked')},
+						]
+						
+						if( _agreeCheck.every((item) => item.checked == 'true') ){
+							ALLCHECK.checked = true
+							ALLCHECK.setAttribute('aria-checked', 'true')
+						}
+
+					}
+				})
+			}
+		}
+
+	
+	</script>
+</head>
+<body>
+	
+	<section id="agree" style="display: block;">
+		
+		<ul>
+			<li>
+				<input type="checkbox" name="check_all" id="check_all" aria-checked="false">
+				<label for="check_all">전체동의</label>
+			</li>
+		</ul>
+
+		<ul>
+			<li>
+				<input type="checkbox" name="check" id="check1" aria-checked="false">
+				<label for="check1">필수동의 1</label>
+			</li>
+			<li>
+				<input type="checkbox" name="check" id="check2" aria-checked="false">
+				<label for="check2">필수동의 2</label>
+			</li>
+			<li>
+				<input type="checkbox" name="check" id="check3" aria-checked="false">
+				<label for="check3">선택동의 1</label>
+			</li>
+			<li>
+				<input type="checkbox" name="check" id="check4" aria-checked="false">
+				<label for="check4">선택동의 2</label>
+			</li>
+		</ul>
+		
+
+	</section>
+
+	<section id="member" style="display:none">
+		<ul>
+			<li>
+				<label for="id">아이디</label>
+				<input type="text" maxlength="8" id="id" name="id" >
+			</li>
+		</ul>
+	</section>
+
+</body>
+</html>
