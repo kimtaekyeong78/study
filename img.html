@@ -18,16 +18,19 @@
 		function _f_init(){
 			
 			let imgs = document.getElementsByTagName('img')
+			let li = document.getElementsByTagName('li')
 			let imgWidth = new Array
 
 			for(var value of imgs){ 
-				
+	
 				imgWidth.push(value.width)
-				
+
 			}
 
 			console.log('큰값 : ' + Math.min.apply(null, imgWidth))
 			console.log('작은값 : ' + Math.max.apply(null, imgWidth))
+
+
 
 		}
 
