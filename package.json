@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/kimtaekyeong78/study/issues"
   },
-  "homepage": "https://github.com/kimtaekyeong78/study#readme"
+  "homepage": "https://github.com/kimtaekyeong78/study#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
