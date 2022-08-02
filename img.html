@@ -6,6 +6,9 @@
 	<title>javascript</title>
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 	<link crossorigin="anonymous" media="all" rel="stylesheet" href="/assets/scss/common.css" />
+	<style>
+		
+	</style>
 	<script type="text/javascript">
 		
 		
@@ -22,13 +25,17 @@
 			let imgWidth = new Array
 
 			for(var value of imgs){ 
-	
 				imgWidth.push(value.width)
 
 			}
 
-			console.log('큰값 : ' + Math.min.apply(null, imgWidth))
-			console.log('작은값 : ' + Math.max.apply(null, imgWidth))
+			for(var value of li){ 
+				value.style = `width:${Math.min.apply(null, imgWidth)}px`
+
+			}
+			
+			console.log('큰값 : ' + Math.max.apply(null, imgWidth))
+			console.log('작은값 : ' + Math.min.apply(null, imgWidth))
 
 
 
